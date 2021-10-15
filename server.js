@@ -1,7 +1,11 @@
 const express = require('express');
+const connectDB = require('./config/db')
 
 const app = express();
-
+//Connect DB
+connectDB();
+//Init middleware
+app.use(express.json())
 app.get('/', (req, res) => res.json({ msg: 'Wellcome to the contactKeeper API' }))
 // Define our Routes
 app.use('/api/users', require('./routes/users'))
